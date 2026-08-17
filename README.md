@@ -1,6 +1,9 @@
 # 🧠 AI Real-Time Emotion, Health (rPPG) & Focus Tracker
 
+> **An all-in-one, 100% local computer vision workstation companion: Fusing contactless rPPG pulse, AffectNet emotion, iris gaze attention, and local LLM coaching into a lightweight Windows tray app.**
+
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![PyPI](https://img.shields.io/pypi/v/ai-emotion-health-tracker.svg)](https://pypi.org/project/ai-emotion-health-tracker/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![ONNX DirectML](https://img.shields.io/badge/Hardware%20Accel-DirectML%20%7C%20CUDA-green.svg)](https://onnxruntime.ai/)
 [![Privacy: 100% Local](https://img.shields.io/badge/Privacy-100%25%20On--Device-brightgreen.svg)]()
@@ -92,37 +95,68 @@ It real-time tracks **contactless physiological vitals (rPPG heart rate)**, **Af
 
 ## 🚀 Quick Start
 
-### 1. Prerequisites
-- Python 3.10, 3.11, or 3.12 installed
-- (Optional for deep LLM synthesis) [Ollama](https://ollama.com) with `llama3` or `gemma2`
+### Installation
 
-### 2. Installation
-Clone the repository and install the dependencies:
-
+#### Option A: Install from PyPI (Recommended)
 ```bash
-git clone https://github.com/your-username/ai-emotion-health-face-tracker.git
-cd ai-emotion-health-face-tracker
+pip install ai-emotion-health-tracker
+```
+
+After installing, three commands become available globally:
+```bash
+ai-tracker         # Launch the visual HUD window
+ai-tracker-tray    # Launch the silent system tray background mode
+ai-tracker-coach   # Generate a daily AI health coaching report
+```
+
+#### Option B: Download Standalone .exe (No Python Required)
+Download the latest release from the [GitHub Releases](https://github.com/hklhfong/ai-emotion-health-tracker/releases) page:
+- **`AI Tracker.exe`** — Interactive visual HUD with live camera feed
+- **`AI Tracker Tray.exe`** — Silent background system tray mode
+
+> No Python installation needed. Just download and double-click.
+
+#### Option C: Clone from Source
+```bash
+git clone https://github.com/hklhfong/ai-emotion-health-tracker.git
+cd ai-emotion-health-tracker
 pip install -r requirements.txt
 ```
 
-### 3. Usage
+### Prerequisites
+- **Python 3.10, 3.11, or 3.12** installed
+- (Optional for deep LLM coaching) [Ollama](https://ollama.com) with `ollama pull llama3` or `ollama pull gemma2`
 
-#### Option A: Interactive Visual HUD Window
+### Usage
+
+#### Interactive Visual HUD Window
 ```bash
+# If installed via pip:
+ai-tracker
+
+# If cloned from source:
 python main.py
 ```
 - Press **`Q`** inside the camera window to save and exit.
 - Press **`E`** to export the live session directly to CSV.
 
-#### Option B: Silent Background System Tray App
+#### Silent Background System Tray App
 ```bash
+# If installed via pip:
+ai-tracker-tray
+
+# If cloned from source:
 python tray_app.py
 ```
 - Minimizes directly into the Windows Notification Area tray.
 - Right-click the **green circle icon** to pause, ask the AI Coach, or view reports.
 
-#### Option C: Generate Daily AI Health Coach Insights
+#### Daily AI Health Coach Insights
 ```bash
+# If installed via pip:
+ai-tracker-coach
+
+# If cloned from source:
 python run_coach.py
 ```
 
@@ -166,6 +200,38 @@ This repository is designed following **Privacy-by-Design** and **Local-Only Zer
 ## ⚕️ Medical & Wellness Disclaimer
 
 This software is an **experimental wellness and productivity tracking tool**. It is **NOT** a medical diagnostic device, clinical software, or certified medical monitor. Measurements such as rPPG heart rate, eye strain, and stress scores are approximations derived from computer vision algorithms and should **not** be used as a substitute for professional medical advice, diagnosis, or treatment.
+
+---
+
+## 🏗️ Building Standalone Executables
+
+To build portable `.exe` files that run on any Windows machine without Python:
+
+```bash
+# Install build dependency
+pip install pyinstaller
+
+# Run the build script
+python build_exe.py
+
+# Or use the one-click batch file:
+build_exe.bat
+```
+
+This produces two files in the `dist/` folder:
+- **`AI Tracker.exe`** — Visual HUD mode (with console)
+- **`AI Tracker Tray.exe`** — System tray mode (no console)
+
+---
+
+## 📦 Publishing to PyPI
+
+For maintainers:
+```bash
+pip install build twine
+python -m build
+twine upload dist/*
+```
 
 ---
 

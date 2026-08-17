@@ -21,6 +21,17 @@ test_reports/
 *.lnk
 *.vbs
 
+# PyInstaller build artifacts
+build/
+dist/
+*.spec
+
+# PyPI distribution artifacts
+*.egg-info/
+*.egg
+*.whl
+*.tar.gz
+
 # IDEs
 .vscode/
 .idea/
