@@ -121,8 +121,24 @@ All data is stored strictly on your local machine in `tracker_history.db`:
 
 ---
 
-## 🔒 Privacy Guarantee
-This application does **NOT** upload any camera frames, video recordings, or health metrics to external cloud servers. All neural inferences, signal processing, database storage, and LLM synthesis happen **100% on your local hardware**.
+## 🔒 Security Architecture & Privacy Disclosures
+
+This repository is designed following **Privacy-by-Design** and **Local-Only Zero-Trust** principles:
+
+### 1. Zero Cloud Transmission & No Video Recording
+- **No Video Storage**: Raw camera frames exist only in transient RAM buffers for immediate landmark calculation ($< 30\text{ ms}$) and are immediately discarded. No video files, images, or audio recordings are ever saved to disk.
+- **Zero Telemetry / No External Calls**: All neural network inferences (`MediaPipe`, `AffectNet ONNX`), signal filters, database logging, and LLM coaching queries run entirely on `localhost`. No data is transmitted across the network.
+
+### 2. Open-Source Transparency & Anti-Malware Notice
+- **100% Plain Python Source**: All code is open, auditable, and uses standard, official PyPI packages (`opencv-python`, `mediapipe`, `onnxruntime-directml`, `scipy`).
+- **No Obfuscated Executables**: No pre-compiled binary blobs (`.exe` or `.dll`) are included in the source tree to ensure verifiable safety.
+- **Local SQLite Storage**: Health metrics are stored in a standard unencrypted SQLite database (`tracker_history.db`) in your local project directory. Users can delete or inspect this file at any time.
+
+---
+
+## ⚕️ Medical & Wellness Disclaimer
+
+This software is an **experimental wellness and productivity tracking tool**. It is **NOT** a medical diagnostic device, clinical software, or certified medical monitor. Measurements such as rPPG heart rate, eye strain, and stress scores are approximations derived from computer vision algorithms and should **not** be used as a substitute for professional medical advice, diagnosis, or treatment.
 
 ---
 
