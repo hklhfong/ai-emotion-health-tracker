@@ -62,12 +62,39 @@ It real-time tracks **contactless physiological vitals (rPPG heart rate)**, **Af
 
 ---
 
+## 📋 System & Hardware Requirements
+
+### Minimum Hardware
+- **Processor**: Intel Core i3 / AMD Ryzen 3 or higher (ARM64 supported)
+- **RAM**: 4 GB RAM minimum (8 GB recommended)
+- **Camera**: Any standard built-in or USB webcam ($720\text{p}$ or $1080\text{p}$, $30\text{ FPS}$)
+- **GPU Acceleration**: Compatible with all DirectX 12 GPUs (Intel Iris Xe, AMD Radeon, NVIDIA GeForce) via **DirectML**
+
+### Operating System
+- **Windows 10 / 11** (Full support for System Tray, DirectShow camera sharing, and Windows input wake-up)
+- **macOS / Linux** (Full CLI & visual tracker support)
+
+### Core Python Dependencies (`requirements.txt`)
+| Package | Version | Purpose |
+| :--- | :--- | :--- |
+| **`opencv-python`** | `~4.11.0` | Camera frame acquisition & HUD rendering |
+| **`mediapipe`** | `==0.10.14` | 468 3D Facial Mesh & Refined Iris Landmarks |
+| **`numpy`** | `1.26.x` | High-speed array tensor & matrix calculations |
+| **`scipy`** | `>=1.10.0` | Butterworth bandpass filter & FFT signal processing |
+| **`onnxruntime-directml`** | `>=1.18.0` | GPU-accelerated DirectML deep learning inference |
+| **`hsemotion-onnx`** | `>=0.3.1` | AffectNet EfficientNet facial emotion recognition |
+| **`pystray`** | `>=0.19.5` | Windows System Tray notification area controller |
+| **`pandas`** | `>=1.5.0` | Session log analytics and CSV/JSON data export |
+| **`Pillow`** | `>=10.0.0` | Dynamic system tray icon image generator |
+| **`requests`** | `>=2.28.0` | Local Ollama LLM REST API client |
+
+---
+
 ## 🚀 Quick Start
 
 ### 1. Prerequisites
-- Windows 10/11 or Linux / macOS
-- Python 3.10+
-- (Optional for LLM insights) [Ollama](https://ollama.com) running `llama3` or `gemma2`
+- Python 3.10, 3.11, or 3.12 installed
+- (Optional for deep LLM synthesis) [Ollama](https://ollama.com) with `llama3` or `gemma2`
 
 ### 2. Installation
 Clone the repository and install the dependencies:
