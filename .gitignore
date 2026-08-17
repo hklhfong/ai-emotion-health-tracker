@@ -1,0 +1,26 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Database and user runtime logs (keep repository clean)
+tracker_history.db
+test_tracker.db
+session_reports/
+test_reports/
+*.csv
+*.json
+*.log
+
+# Windows shortcuts
+*.lnk
+*.vbs
+
+# IDEs
+.vscode/
+.idea/
